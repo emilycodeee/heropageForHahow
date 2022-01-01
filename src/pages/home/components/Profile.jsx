@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 
 const Profile = () => {
   const { heroId } = useParams();
-  console.log(heroId);
+  // console.log(heroId);
   return <div>{heroId}</div>;
 };
 
