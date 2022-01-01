@@ -10,19 +10,19 @@ const Container = styled.main`
   max-width: 1560px;
   width: 100%;
   margin: 0 auto;
-  margin-top: 10%;
-  border: 1px solid salmon;
+  margin: 10% 0;
+  /* border: 1px solid #ececff; */
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const HerosList = styled.section`
-  padding: 1rem;
+  /* padding: 1rem; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 1.4rem;
-
+  width: 80%;
   @media only screen and (max-width: 1000px) {
     grid-template-columns: 1fr 1fr;
   }

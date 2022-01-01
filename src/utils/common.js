@@ -3,4 +3,6 @@ const heroesApi = {
   endpoint: "profile",
 };
 
-export { heroesApi };
+const abilityList = ["str", "int", "agi", "luk"];
+
+export { heroesApi, abilityList };

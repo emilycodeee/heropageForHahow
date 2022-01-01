@@ -5,11 +5,13 @@ import { heroesApi } from "../../../utils/common";
 const LinkContainer = styled(Link)`
   padding: 1rem;
   border: 1px solid
-    ${(props) => (props.id === props.selected ? "red" : "orange")};
+    ${(props) => (props.id === props.selected ? "#ececff" : "none")};
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: #ececff;
 `;
 
 const HeroCard = ({ hero }) => {
