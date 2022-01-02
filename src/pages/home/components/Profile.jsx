@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { heroesApi, abilityList } from "../../../utils/common";
 
 import Button from "./Button";
@@ -43,29 +43,56 @@ const Profile = () => {
   const { heroId } = useParams();
   const [abilityScore, setAbilityScore] = useState({});
   const [assignable, setAssignable] = useState(0);
+
+  const abRef = useRef({});
+
   useEffect(() => {
     const fetchProfileApi = async () => {
       const res = await fetch(
         `${heroesApi.rootUrl}/${heroId}/${heroesApi.endpoint}`
       );
       const data = await res.json();
+      console.log(data);
       setAbilityScore(data);
     };
     fetchProfileApi();
   }, [heroId]);
-  console.log(heroId);
-  console.log(abilityList);
+
+  const handleSave = () => {
+    if (assignable > 0) {
+      alert("能力點分配完成才可以儲存喔！");
+      return;
+    }
+    fetch(`${heroesApi.rootUrl}/${heroId}/${heroesApi.endpoint}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+      body: JSON.stringify(abRef.current),
+    })
+      .then((res) => alert("儲存成功"))
+      .catch((err) => console.log("💥", console.error(err)));
+    console.log(abRef.current);
+  };
+
   return (
     <Container>
       <ButtonSet>
         {abilityList.map((ab) => (
-          <Button key={ab} ability={ab} abilityScore={abilityScore} />
+          <Button
+            key={ab}
+            refObj={abRef}
+            ability={ab}
+            abilityScore={abilityScore}
+            assignable={assignable}
+            setAssignable={setAssignable}
+          />
         ))}
       </ButtonSet>
       <AssignArea>
         <div>剩餘點數</div>
         <div>{assignable}</div>
-        <SaveButton>儲存</SaveButton>
+        <SaveButton onClick={handleSave}>儲存</SaveButton>
       </AssignArea>
     </Container>
   );

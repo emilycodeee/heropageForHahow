@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useCounter from "../../../hooks/useCounter";
 
 const ButtonStyle = styled.button`
   align-items: center;
@@ -122,13 +123,27 @@ const Text = styled.div`
   font-size: 24px;
 `;
 
-const Button = ({ ability, abilityScore }) => {
+const Button = ({
+  ability,
+  abilityScore,
+  assignable,
+  setAssignable,
+  refObj,
+}) => {
+  const [count, incrementCounter, decrementCounter] = useCounter(
+    abilityScore[ability],
+    assignable,
+    setAssignable
+  );
+
+  refObj.current = { ...refObj.current, [ability]: count };
+
   return (
     <ButtonsContainer>
       <Text>{ability.toUpperCase()}</Text>
-      <ButtonStyle> + </ButtonStyle>
-      <Text> {abilityScore[ability]} </Text>
-      <ButtonStyle>-</ButtonStyle>
+      <ButtonStyle onClick={incrementCounter}> + </ButtonStyle>
+      <Text> {count} </Text>
+      <ButtonStyle onClick={decrementCounter}>-</ButtonStyle>
     </ButtonsContainer>
   );
 };
