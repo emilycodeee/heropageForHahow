@@ -9,6 +9,7 @@ const Container = styled.div`
   gap: 10px;
   @media only screen and (max-width: 640px) {
     flex-direction: column;
+    align-items: center;
   }
 `;
 

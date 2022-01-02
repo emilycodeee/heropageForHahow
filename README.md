@@ -25,7 +25,7 @@ npm start
 
 **4. 透過瀏覽器瀏覽專案**
 
-打開瀏覽器在網址列輸入 localhost:3000 即可瀏覽或直接進入上方 demo 連結
+打開瀏覽器在網址列輸入 [http://localhost:3000/heropageForHahow#/heroes](http://localhost:3000/heropageForHahow#/heroes) 即可瀏覽或直接進入上方 demo 連結
 
 ## 專案架構
 
