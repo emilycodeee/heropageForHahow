@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/heropageForHahow/static/css/main.f7015268.css",
-    "main.js": "/heropageForHahow/static/js/main.e51a506c.js",
+    "main.js": "/heropageForHahow/static/js/main.b07cb4a5.js",
     "static/js/787.b7e3be04.chunk.js": "/heropageForHahow/static/js/787.b7e3be04.chunk.js",
     "index.html": "/heropageForHahow/index.html",
     "main.f7015268.css.map": "/heropageForHahow/static/css/main.f7015268.css.map",
-    "main.e51a506c.js.map": "/heropageForHahow/static/js/main.e51a506c.js.map",
+    "main.b07cb4a5.js.map": "/heropageForHahow/static/js/main.b07cb4a5.js.map",
     "787.b7e3be04.chunk.js.map": "/heropageForHahow/static/js/787.b7e3be04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f7015268.css",
-    "static/js/main.e51a506c.js"
+    "static/js/main.b07cb4a5.js"
   ]
 }
