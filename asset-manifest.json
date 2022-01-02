@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/heropageForHahow/static/css/main.f7015268.css",
-    "main.js": "/heropageForHahow/static/js/main.991feffc.js",
-    "static/js/787.b7e3be04.chunk.js": "/heropageForHahow/static/js/787.b7e3be04.chunk.js",
-    "index.html": "/heropageForHahow/index.html",
-    "main.f7015268.css.map": "/heropageForHahow/static/css/main.f7015268.css.map",
-    "main.991feffc.js.map": "/heropageForHahow/static/js/main.991feffc.js.map",
-    "787.b7e3be04.chunk.js.map": "/heropageForHahow/static/js/787.b7e3be04.chunk.js.map"
+    "main.css": "/heropageForHahow/heroes/static/css/main.f7015268.css",
+    "main.js": "/heropageForHahow/heroes/static/js/main.3d8f2cc2.js",
+    "static/js/787.b7e3be04.chunk.js": "/heropageForHahow/heroes/static/js/787.b7e3be04.chunk.js",
+    "index.html": "/heropageForHahow/heroes/index.html",
+    "main.f7015268.css.map": "/heropageForHahow/heroes/static/css/main.f7015268.css.map",
+    "main.3d8f2cc2.js.map": "/heropageForHahow/heroes/static/js/main.3d8f2cc2.js.map",
+    "787.b7e3be04.chunk.js.map": "/heropageForHahow/heroes/static/js/787.b7e3be04.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f7015268.css",
-    "static/js/main.991feffc.js"
+    "static/js/main.3d8f2cc2.js"
   ]
 }
