@@ -91,7 +91,7 @@ const IconStyle = {
 //引用物件
 const RevertIcon = styled(BiUndo)`
   ${IconStyle}
-  font-size: 2rem;
+  font-size: 3rem;
   margin: 10px 0;
 `;
 ```

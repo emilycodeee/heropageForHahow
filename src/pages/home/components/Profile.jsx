@@ -45,7 +45,6 @@ const Profile = () => {
       alert("能力點分配完成才可以儲存喔！");
       return;
     }
-
     fetch(`${heroesApi.rootUrl}/${heroId}/${heroesApi.endpoint}`, {
       headers: {
         "Content-Type": "application/json",
