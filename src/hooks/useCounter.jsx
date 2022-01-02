@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 const useCounter = (initScore, assignable, setAssignable) => {
   useEffect(() => {
-    //re-init when profile is changed
     setCount(initScore);
     setAssignable(0);
   }, [initScore]);
@@ -10,6 +9,9 @@ const useCounter = (initScore, assignable, setAssignable) => {
   const [count, setCount] = useState(initScore);
 
   const incrementCounter = () => {
+    if (assignable === 0) {
+      alert("要先有多餘的能力值點數，才可以分配呦");
+    }
     if (assignable > 0) {
       setCount((prev) => prev + 1);
       setAssignable((prev) => prev - 1);
@@ -17,6 +19,9 @@ const useCounter = (initScore, assignable, setAssignable) => {
   };
 
   const decrementCounter = () => {
+    if (count === 0) {
+      alert("不要再減了，已經歸零啦");
+    }
     if (count > 0) {
       setCount((prev) => prev - 1);
       setAssignable((prev) => prev + 1);
