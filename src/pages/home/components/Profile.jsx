@@ -1,7 +1,8 @@
 import { useParams } from "react-router";
 import React, { useEffect, useState, useRef } from "react";
 import { heroesApi, abilityList } from "../../../utils/common";
-
+import ReactLoading from "react-loading";
+import useLoading from "../../../hooks/useLoading";
 import Button from "./Button";
 import styled from "styled-components";
 
@@ -43,17 +44,23 @@ const Profile = () => {
   const { heroId } = useParams();
   const [abilityScore, setAbilityScore] = useState({});
   const [assignable, setAssignable] = useState(0);
-
+  const [loading, setLoading] = useLoading();
   const abRef = useRef({});
 
   useEffect(() => {
+    setLoading(true);
     const fetchProfileApi = async () => {
-      const res = await fetch(
-        `${heroesApi.rootUrl}/${heroId}/${heroesApi.endpoint}`
-      );
-      const data = await res.json();
-      console.log(data);
-      setAbilityScore(data);
+      try {
+        const res = await fetch(
+          `${heroesApi.rootUrl}/${heroId}/${heroesApi.endpoint}`
+        );
+        const data = await res.json();
+        console.log(data);
+        setAbilityScore(data);
+        setLoading(false);
+      } catch (err) {
+        console.error(err.message);
+      }
     };
     fetchProfileApi();
   }, [heroId]);
@@ -77,23 +84,29 @@ const Profile = () => {
 
   return (
     <Container>
-      <ButtonSet>
-        {abilityList.map((ab) => (
-          <Button
-            key={ab}
-            refObj={abRef}
-            ability={ab}
-            abilityScore={abilityScore}
-            assignable={assignable}
-            setAssignable={setAssignable}
-          />
-        ))}
-      </ButtonSet>
-      <AssignArea>
-        <div>剩餘點數</div>
-        <div>{assignable}</div>
-        <SaveButton onClick={handleSave}>儲存</SaveButton>
-      </AssignArea>
+      {loading ? (
+        <ReactLoading color=" #ececff" />
+      ) : (
+        <>
+          <ButtonSet>
+            {abilityList.map((ab) => (
+              <Button
+                key={ab}
+                refObj={abRef}
+                ability={ab}
+                abilityScore={abilityScore}
+                assignable={assignable}
+                setAssignable={setAssignable}
+              />
+            ))}
+          </ButtonSet>
+          <AssignArea>
+            <div>剩餘點數</div>
+            <div>{assignable}</div>
+            <SaveButton onClick={handleSave}>儲存</SaveButton>
+          </AssignArea>
+        </>
+      )}
     </Container>
   );
 };

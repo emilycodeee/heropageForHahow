@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Profile from "./components/Profile";
 import HeroCard from "./components/HeroCard";
 import { heroesApi } from "../../utils/common";
+import useLoading from "../../hooks/useLoading";
+import ReactLoading from "react-loading";
 import styled from "styled-components";
 
 const Container = styled.main`
@@ -11,14 +13,12 @@ const Container = styled.main`
   width: 100%;
   margin: 0 auto;
   margin: 10% 0;
-  /* border: 1px solid #ececff; */
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const HerosList = styled.section`
-  /* padding: 1rem; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 1.4rem;
@@ -33,22 +33,28 @@ const HerosList = styled.section`
 
 const Home = () => {
   const [herosList, setHeroList] = useState([]);
+  const [loading, setLoading] = useLoading();
   useEffect(() => {
     const fetchHerosApi = async () => {
       const res = await fetch(heroesApi.rootUrl);
       const data = await res.json();
       setHeroList(data);
+      setLoading(false);
     };
     fetchHerosApi();
   }, []);
 
   return (
     <Container>
-      <HerosList>
-        {herosList.map((hero) => (
-          <HeroCard hero={hero} key={hero.id} />
-        ))}
-      </HerosList>
+      {loading ? (
+        <ReactLoading color=" #ececff" />
+      ) : (
+        <HerosList>
+          {herosList.map((hero) => (
+            <HeroCard hero={hero} key={hero.id} />
+          ))}
+        </HerosList>
+      )}
       <Switch>
         <Route path="/heroes/:heroId">
           <Profile />

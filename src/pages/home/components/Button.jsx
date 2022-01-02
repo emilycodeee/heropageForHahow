@@ -115,7 +115,6 @@ const ButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 10px; */
 `;
 
 const Text = styled.div`
