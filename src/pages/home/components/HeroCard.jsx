@@ -1,18 +1,5 @@
-import styled from "styled-components";
-import { Link, useRouteMatch, useLocation } from "react-router-dom";
-import { heroesApi } from "../../../utils/common";
-
-const LinkContainer = styled(Link)`
-  padding: 1rem;
-  border: 1px solid
-    ${(props) => (props.id === props.selected ? "#ececff" : "none")};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #ececff;
-`;
+import { LinkContainer } from "./style/HeroCard.style";
+import { useRouteMatch, useLocation } from "react-router-dom";
 
 const HeroCard = ({ hero }) => {
   const { path } = useRouteMatch();
@@ -21,7 +8,7 @@ const HeroCard = ({ hero }) => {
 
   return (
     <LinkContainer to={`${path}/${hero.id}`} id={hero.id} selected={selected}>
-      <img src={hero.image} />
+      <img src={hero.image} alt={hero.name} />
       <div> {hero.name}</div>
     </LinkContainer>
   );

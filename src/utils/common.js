@@ -1,5 +1,5 @@
 const heroesApi = {
-  rootUrl: "http://hahow-recruit.herokuapp.com/heroes",
+  rootUrl: "https://hahow-recruit.herokuapp.com/heroes",
   endpoint: "profile",
 };
 
