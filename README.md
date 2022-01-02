@@ -31,14 +31,14 @@ npm start
 
 - pages/home 資料夾
 
-  - index.js <br>
+  - index.jsx <br>
     專案顯示入口檔案，設定 heros 之巢狀路由。
   - components 資料夾<br>
 
     - HeroCard.jsx <br>
-      顯示 hero list 名稱、圖片之共用組件，點擊將透過 router 顯示相應之 profile 能力值。
+      顯示 hero list 名稱、圖片之共用組件，點擊將透過 router 顯示相應 profile 能力值。
     - Profile.jsx<br>
-      顯示所選 hero 之能力值，並可點擊按鈕調整能力值，當剩餘點數接分配完成，即可送出儲存。
+      顯示所選 hero 之能力值，並可點擊按鈕調整能力值，當剩餘點數分配完成，即可送出儲存。
 
     - Button.jsx<br>
       調整能力值之按鈕共用組件，useCounter 共用點數計算與連動剩餘點數計算之操作邏輯。
@@ -52,7 +52,7 @@ npm start
 
 - utils 資料夾
   - common.js <br>
-    api 網址統一儲存，避免 api 網址更新要更動多個檔案，宣告能力值顯示陣列。
+    api 網址統一儲存，避免 api 網址更新要更動多個檔案，宣告能力值屬性陣列。
 
 #### Web 的架構邏輯
 
@@ -64,7 +64,7 @@ npm start
 
 https://www.npmjs.com/package/react-loading
 
-loading 的簡易動畫套件，雖然最新一次維護是三年前，但仍是目前單月下載量最多 loading 快捷動畫，在做個人專案練習的時候也常使用這個套件。
+loading 的簡易動畫套件，雖然最新一次維護是三年前，但仍是目前單月下載量最多的 loading 快捷動畫，在做其他練習小專案的時候也常使用這個套件。
 
 基本上，可以像是引入 component 一樣使用，若想調整動畫的高、寬、顏色，可以依 document 指示調整。並也可以調整動畫速度、或加上 className 。
 
@@ -72,11 +72,29 @@ loading 的簡易動畫套件，雖然最新一次維護是三年前，但仍是
 
 https://styled-components.com/
 
-就我個人的理解，我認為 CSS in JS 有以下優點，可以像寫程式一樣寫 CSS，宣告變數、動態控制(props)、不用煩惱 class 取名問題等，並且也因為元件化，而想是我們一開始就訂好元件被影響的邊界，不用像原本 CSS 檔案那樣，可能樣是彼此影響與覆蓋。
+就我個人的理解，我認為 CSS in JS 有以下優點，可以像寫程式一樣寫 CSS，宣告變數、動態控制(props)、不用煩惱 class 取名問題、解決 code spliting 可能出現的順序問題等，並且也因為元件化，而像我們一開始就訂好元件樣式被影響的邊界，不用像原本 CSS 檔案那樣，可能因為彼此影響與覆蓋而發生不如預期的顯示錯誤。
 
 但缺點部分則是可能會讓元件看起來很長，因此我都會特別把 style 檔案分別拆出去，但這也要謝謝 vscode 可以點擊變數直接連結至該變數內容，不然查找起來應該會蠻痛苦的。
 
-另一點是複用性，雖然元件切小可以共用，但相較原本 CSS 可以透過選擇器讓指定的屬性或 TAG 都使用同樣的樣式，但這點要實現上就比較困難，但因為 CSS in JS ，仍然可以宣告共用的物件來層層覆蓋。
+另一點是複用性，雖然元件切小可以共用，但相較原本 CSS 可以透過選擇器讓指定的屬性或 TAG 一次使用同樣的樣式，CSS in Js 在這點要實現就比較困難，但也因為是 CSS in JS ，仍然可以宣告共用的物件來層層覆蓋。
+
+範例如下，這個用法在個人專案 shareMore 有使用，但在 heroPage 則沒有用上。
+
+```
+//宣告物件
+const IconStyle = {
+  fontSize: "2rem",
+  cursor: "pointer",
+  color: "#f27e59",
+};
+
+//引用物件
+const RevertIcon = styled(BiUndo)`
+  ${IconStyle}
+  font-size: 2rem;
+  margin: 10px 0;
+`;
+```
 
 ## 撰寫註解原則
 
